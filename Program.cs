@@ -8,19 +8,20 @@ namespace sistema_vendas
         {
             string opcao = "";
             do{
-                
+                Console.Clear();
                 Console.WriteLine("==========================");
                 Console.WriteLine();
-                Console.WriteLine("Digite a opção:");
-                Console.WriteLine("1 - Cadastrar Cliente");
-                Console.WriteLine("2 - Cadastrar Produto");
-                Console.WriteLine("3 - Realizar Venda");
-                Console.WriteLine("4 - Extrato Cliente");
-                Console.WriteLine("9 - Sair");
+                Console.WriteLine("    Digite a opção:");
+                Console.WriteLine("    1 - Cadastrar Cliente");
+                Console.WriteLine("    2 - Cadastrar Produto");
+                Console.WriteLine("    3 - Realizar Venda");
+                Console.WriteLine("    4 - Extrato Cliente");
+                Console.WriteLine("    9 - Sair");
                 Console.WriteLine();
                 Console.WriteLine("===========================");
 
                 //Recebe opção do Cliente
+                Console.Write("opção: ");
                 opcao = Console.ReadLine();
 
 
@@ -46,6 +47,16 @@ namespace sistema_vendas
 
         //Cadastra um novo cliente
         static void CadastrarCliente(){
+                string pessoa = "";
+            do
+            {
+                
+                Console.WriteLine("Digite sua opção: ");
+                Console.WriteLine("1 - Pessoa Física");
+                Console.WriteLine("2 - Pessoa Jurídica");
+                pessoa = Console.ReadLine();
+                
+            } while ((pessoa != "1") || (pessoa != "2"));
 
         }
 
