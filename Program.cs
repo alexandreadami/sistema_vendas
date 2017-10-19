@@ -22,25 +22,42 @@ namespace sistema_vendas
                 switch (opcao)
                 {
                     case "1":
-                        Console.WriteLine("Castrar cliente");
+                        CadastrarCliente();
                         break;
                     case "2":
-                        Console.WriteLine("Castrar Produto");
+                        CadastrarProduto();
                         break;
                     case "3":
-                        Console.WriteLine("Realizar venda");
+                        RealizarVenda();
                         break;
                     case "4":
-                        Console.WriteLine("Extrato Cliente");
+                        ExtratoCliente();
                         break;            
                     //default:
                 }
 
-
-
-
-
             }while(opcao != "9");
         }
+
+        //Cadastra um novo cliente
+        static void CadastrarCliente(){
+
+        }
+
+        //Cadastra um novo produto
+        static void CadastrarProduto(){
+
+        }
+
+        //Realiza uma venda
+        static void RealizarVenda(){
+
+        }
+
+        //Extrato do cliente
+        static void ExtratoCliente(){
+
+        }
+
     }
 }
