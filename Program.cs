@@ -56,45 +56,113 @@ namespace sistema_vendas
         static void CadastrarCliente(){
                 string opcao_pessoa = "";
                 bool correto = false;
+                bool cpfvalido = false;
+                bool cnpjvalido = false;
+                string nome;
+                string email;
+                string data_cadastro;
             do
             {
                 
+                Console.Clear();
                 Console.WriteLine();
                 Console.WriteLine("==========================");
                 Console.WriteLine();
-                Console.WriteLine("    Digite a opção: ");
+                Console.WriteLine("    Digite a opção:       ");
                 Console.WriteLine();
-                Console.WriteLine("    1 - Pessoa Física");
-                Console.WriteLine("    2 - Pessoa Jurídica");
+                Console.WriteLine("    1 - Pessoa Física     ");
+                Console.WriteLine("    2 - Pessoa Jurídica   ");
                 Console.WriteLine();
                 Console.WriteLine("==========================");
                 Console.WriteLine();
                 Console.Write("Opção: ");
                 opcao_pessoa = Console.ReadLine();
-                if (opcao_pessoa == "1")
+                
+                if (opcao_pessoa == "1") //pessoa fisica
                 {
                     
 
-                    correto = true;
-                }
-                if (opcao_pessoa == "2")
-                {
-                    
+                    do
+                    {
+                    Console.WriteLine();
+                    Console.Write("Informe o CPF: ");
+                    string cpf = Console.ReadLine();
+                    cpfvalido = ValidaCpf(cpf);
+                        
+                        
+                    } while (cpfvalido == false);
+
+                    Console.WriteLine();
+                    Console.Write("Nome Completo: ");
+                    nome = Console.ReadLine();
+
+                    Console.WriteLine();
+                    Console.Write("E-mail: ");
+                    email = Console.ReadLine();
+
+                    Console.WriteLine();
+                    Console.Write("Data de cadastro: ");
+                    data_cadastro = Console.ReadLine();
 
                     correto = true;
                 }
+                
+                if (opcao_pessoa == "2") //pessoa juridica
+                {
+                     do
+                    {
+                    Console.WriteLine();
+                    Console.Write("Informe o CNPJ: ");
+                    string cnpj = Console.ReadLine();
+                    cnpjvalido = ValidaCpf(cnpj);
+                        
+                        
+                    } while (cnpjvalido == false);
+
+                    Console.WriteLine();
+                    Console.Write("Nome Completo: ");
+                    nome = Console.ReadLine();
+
+                    Console.WriteLine();
+                    Console.Write("E-mail: ");
+                    email = Console.ReadLine();
+
+                    Console.WriteLine();
+                    Console.Write("Data de cadastro: ");
+                    data_cadastro = Console.ReadLine();
+
+                    correto = true;
+                }
+                
                 if ((opcao_pessoa != "1") || (opcao_pessoa != "2"))
                 {
                     Console.WriteLine();
                     Console.WriteLine("Opção inválida!");
                     Console.WriteLine();
                 }
-
                 
             } while (correto != true);
 
         }
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         //Cadastra um novo produto
         static void CadastrarProduto(){
 
@@ -110,23 +178,129 @@ namespace sistema_vendas
 
         }
 
+
+
         //metodo para validar o cpf
         static bool ValidaCpf(string cpf){
-            bool cpfvalido = false;
+            
+             if (cpf.Length != 11){
+                Console.WriteLine("CPF inválido");
+                return false;
+            }
+            else{
+                int[] multiplicador1 = new int[9]{10,9,8,7,6,5,4,3,2};
+                int[] multiplicador2 = new int[10]{11,10,9,8,7,6,5,4,3,2};
+                string tempcpf, digito;
+                int soma = 0, resto = 0;
 
-            if(cpf == "55349862120")
-                cpfvalido = true;
+                tempcpf = cpf.Substring(0,9);
 
-                return cpfvalido;
+                for (int i = 0; i < 9; i++){
+                   soma += Convert.ToInt16(tempcpf[i].ToString()) * multiplicador1[i];
+                }
+
+                resto = soma % 11;
+
+                if (resto < 2){
+                    resto = 0;
+                }
+                else{
+                    resto = 11 - resto;
+                }
+
+                digito = resto.ToString();
+
+                tempcpf = tempcpf + digito;
+                soma = 0;
+                for (int i = 0; i < 10; i++){
+                    soma += Convert.ToInt16(tempcpf[i].ToString()) * multiplicador2[i];
+                }
+
+                resto = soma % 11;
+
+                if (resto <2)
+                    resto = 0;
+                
+                else
+                    resto = 11 - resto;
+                
+                digito = digito + resto.ToString();
+
+              
+                if (cpf.EndsWith(digito) == true)
+                {
+                    return true;
+                }
+                else
+                     return false;
+
+            }
+           
+            
         }
+
+
+
+
+
 
         //metodo valida cnpj
         static bool ValindaCnpj(string cnpj){
-            bool cnpjvalido = false;
+                      if (cnpj.Length != 14){
+                Console.WriteLine("CNPJ inválido");
+                return false;
+            }
+            else{
+                int[] multiplicador1 = new int[9]{10,9,8,7,6,5,4,3,2};
+                int[] multiplicador2 = new int[10]{11,10,9,8,7,6,5,4,3,2};
+                string tempcnpj, digito;
+                int soma = 0, resto = 0;
 
-            if(cnpj == "00744472000159")
-                cnpjvalido = true;
-                return cnpjvalido;
+                tempcnpj = cnpj.Substring(0,9);
+
+                for (int i = 0; i < 9; i++){
+                   soma += Convert.ToInt16(tempcnpj[i].ToString()) * multiplicador1[i];
+                }
+
+                resto = soma % 11;
+
+                if (resto < 2){
+                    resto = 0;
+                }
+                else{
+                    resto = 11 - resto;
+                }
+
+                digito = resto.ToString();
+
+                tempcnpj = tempcnpj + digito;
+                soma = 0;
+                for (int i = 0; i < 10; i++){
+                    soma += Convert.ToInt16(tempcnpj[i].ToString()) * multiplicador2[i];
+                }
+
+                resto = soma % 11;
+
+                if (resto <2)
+                    resto = 0;
+                
+                else
+                    resto = 11 - resto;
+                
+                digito = digito + resto.ToString();
+
+              
+                if (cnpj.EndsWith(digito) == true)
+                {
+                    return true;
+                }
+                else
+                     return false;
+
+            }
+           
+            
+        }
             
         }
 
