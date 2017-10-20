@@ -114,7 +114,7 @@ namespace sistema_vendas
                     Console.WriteLine();
                     Console.Write("Informe o CNPJ: ");
                     string cnpj = Console.ReadLine();
-                    cnpjvalido = ValidaCpf(cnpj);
+                    cnpjvalido = ValidaCnpj(cnpj);
                         
                         
                     } while (cnpjvalido == false);
@@ -144,27 +144,14 @@ namespace sistema_vendas
             } while (correto != true);
 
         }
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                
         
         //Cadastra um novo produto
         static void CadastrarProduto(){
+
+            Console.Clear();
+            Console.Write("")
+
 
         }
 
@@ -245,20 +232,21 @@ namespace sistema_vendas
 
 
         //metodo valida cnpj
-        static bool ValindaCnpj(string cnpj){
+        static bool ValidaCnpj(string cnpj){
+                           
                       if (cnpj.Length != 14){
                 Console.WriteLine("CNPJ inválido");
                 return false;
             }
             else{
-                int[] multiplicador1 = new int[9]{10,9,8,7,6,5,4,3,2};
-                int[] multiplicador2 = new int[10]{11,10,9,8,7,6,5,4,3,2};
+                int[] multiplicador1 = new int[12]{5,4,3,2,9,8,7,6,5,4,3,2};
+                int[] multiplicador2 = new int[13]{6,5,4,3,2,9,8,7,6,5,4,3,2};
                 string tempcnpj, digito;
                 int soma = 0, resto = 0;
 
-                tempcnpj = cnpj.Substring(0,9);
+                tempcnpj = cnpj.Substring(0,12);
 
-                for (int i = 0; i < 9; i++){
+                for (int i = 0; i < 12; i++){
                    soma += Convert.ToInt16(tempcnpj[i].ToString()) * multiplicador1[i];
                 }
 
@@ -275,7 +263,7 @@ namespace sistema_vendas
 
                 tempcnpj = tempcnpj + digito;
                 soma = 0;
-                for (int i = 0; i < 10; i++){
+                for (int i = 0; i < 13; i++){
                     soma += Convert.ToInt16(tempcnpj[i].ToString()) * multiplicador2[i];
                 }
 
@@ -306,4 +294,3 @@ namespace sistema_vendas
 
 
     }
-}
