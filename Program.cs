@@ -150,7 +150,17 @@ namespace sistema_vendas
         static void CadastrarProduto(){
 
             Console.Clear();
-            Console.Write("")
+            Console.WriteLine();
+            Console.Write("Nome Completo: ");
+            nome = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("E-mail: ");
+            email = Console.ReadLine();
+
+            Console.WriteLine();
+            Console.Write("Data de cadastro: ");
+            data_cadastro = Console.ReadLine();
 
 
         }
