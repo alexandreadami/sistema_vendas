@@ -12,6 +12,7 @@ namespace sistema_vendas
                 Console.WriteLine("==========================");
                 Console.WriteLine();
                 Console.WriteLine("    Digite a opção:");
+                Console.WriteLine();
                 Console.WriteLine("    1 - Cadastrar Cliente");
                 Console.WriteLine("    2 - Cadastrar Produto");
                 Console.WriteLine("    3 - Realizar Venda");
@@ -19,44 +20,78 @@ namespace sistema_vendas
                 Console.WriteLine("    9 - Sair");
                 Console.WriteLine();
                 Console.WriteLine("===========================");
-
+                
                 //Recebe opção do Cliente
-                Console.Write("opção: ");
+                Console.WriteLine();
+                Console.Write("Opção: ");
                 opcao = Console.ReadLine();
 
 
                 switch (opcao)
                 {
                     case "1":
+                        Console.Clear();
                         CadastrarCliente();
                         break;
                     case "2":
+                        Console.Clear();
                         CadastrarProduto();
                         break;
                     case "3":
+                        Console.Clear();
                         RealizarVenda();
                         break;
                     case "4":
+                        Console.Clear();
                         ExtratoCliente();
                         break;            
                     //default:
                 }
+
 
             }while(opcao != "9");
         }
 
         //Cadastra um novo cliente
         static void CadastrarCliente(){
-                string pessoa = "";
+                string opcao_pessoa = "";
+                bool correto = false;
             do
             {
                 
-                Console.WriteLine("Digite sua opção: ");
-                Console.WriteLine("1 - Pessoa Física");
-                Console.WriteLine("2 - Pessoa Jurídica");
-                pessoa = Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine("==========================");
+                Console.WriteLine();
+                Console.WriteLine("    Digite a opção: ");
+                Console.WriteLine();
+                Console.WriteLine("    1 - Pessoa Física");
+                Console.WriteLine("    2 - Pessoa Jurídica");
+                Console.WriteLine();
+                Console.WriteLine("==========================");
+                Console.WriteLine();
+                Console.Write("Opção: ");
+                opcao_pessoa = Console.ReadLine();
+                if (opcao_pessoa == "1")
+                {
+                    
+
+                    correto = true;
+                }
+                if (opcao_pessoa == "2")
+                {
+                    
+
+                    correto = true;
+                }
+                if ((opcao_pessoa != "1") || (opcao_pessoa != "2"))
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Opção inválida!");
+                    Console.WriteLine();
+                }
+
                 
-            } while ((pessoa != "1") || (pessoa != "2"));
+            } while (correto != true);
 
         }
 
